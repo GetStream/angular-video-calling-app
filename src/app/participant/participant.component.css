@@ -1,0 +1,24 @@
+.participant-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+video {
+  object-fit: cover;
+  overflow: hidden;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  background: white;
+  height: 100%;
+  margin: 0;
+  padding: 0.5rem;
+  font-weight: bold;
+}

@@ -1,0 +1,9 @@
+<section class="participants">
+  <ng-container *ngFor="let participant of participants">
+    <app-participant [participant]="participant"></app-participant>
+  </ng-container>
+</section>
+<section class="call-controls">
+  <button (click)="toggleMicrophone()">Microphone</button>
+  <button (click)="toggleCamera()">Camera</button>
+</section>
