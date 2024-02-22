@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, computed, signal } from '@angular/core';
 import { Call, StreamVideoClient, User } from '@stream-io/video-client';
 
 @Injectable({
@@ -6,7 +6,21 @@ import { Call, StreamVideoClient, User } from '@stream-io/video-client';
 })
 export class CallingService {
   callId = signal<string | undefined>(undefined);
-  call = signal<Call | undefined>(undefined);
+
+  call = computed<Call | undefined>(() => {
+    const currentCallId = this.callId();
+    if (currentCallId !== undefined) {
+      const call = this.client.call('default', currentCallId);
+
+      call.join({ create: true }).then(async () => {
+        call.camera.enable();
+        call.microphone.enable();
+      });
+      return call;
+    } else {
+      return undefined;
+    }
+  });
 
   client: StreamVideoClient;
 
@@ -20,28 +34,9 @@ export class CallingService {
   }
 
   setCallId(callId: string | undefined) {
-    console.log('setCallId', callId);
-    if (callId) {
-      this.joinCall(callId);
-    } else {
-      this.leaveCall();
+    if (callId === undefined) {
+      this.call()?.leave();
     }
-  }
-
-  private joinCall(callId: string) {
-    const call = this.client.call('default', callId);
-
-    call.join({ create: true }).then(async () => {
-      call.camera.enable();
-      call.microphone.enable();
-    });
     this.callId.set(callId);
-    this.call.set(call);
-  }
-
-  private leaveCall() {
-    this.call()?.leave();
-    this.callId.set(undefined);
-    this.call.set(undefined);
   }
 }
