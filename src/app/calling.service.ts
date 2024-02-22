@@ -19,8 +19,16 @@ export class CallingService {
     this.client = new StreamVideoClient({ apiKey, token, user });
   }
 
-  setCallId(callId: string) {
+  setCallId(callId: string | undefined) {
     console.log('setCallId', callId);
+    if (callId) {
+      this.joinCall(callId);
+    } else {
+      this.leaveCall();
+    }
+  }
+
+  private joinCall(callId: string) {
     const call = this.client.call('default', callId);
 
     call.join({ create: true }).then(async () => {
@@ -29,5 +37,11 @@ export class CallingService {
     });
     this.callId.set(callId);
     this.call.set(call);
+  }
+
+  private leaveCall() {
+    this.call()?.leave();
+    this.callId.set(undefined);
+    this.call.set(undefined);
   }
 }
