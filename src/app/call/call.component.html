@@ -1,6 +1,6 @@
 <section class="participants">
   <ng-container
-    *ngFor="let participant of participants$ | async; trackBy: trackBySessionId"
+    *ngFor="let participant of participants(); trackBy: trackBySessionId"
   >
     <app-participant [participant]="participant"></app-participant>
   </ng-container>

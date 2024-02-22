@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Signal } from '@angular/core';
 import { CallingService } from '../calling.service';
 import { CommonModule } from '@angular/common';
 import { Call, StreamVideoParticipant } from '@stream-io/video-client';
 import { ParticipantComponent } from '../participant/participant.component';
-import { Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-call',
@@ -15,10 +15,14 @@ import { Observable } from 'rxjs';
 export class CallComponent {
   @Input({ required: true }) call!: Call;
 
-  participants$: Observable<StreamVideoParticipant[]>;
+  participants: Signal<StreamVideoParticipant[]>;
 
   constructor(private callingService: CallingService) {
-    this.participants$ = this.callingService.call()!.state.participants$;
+    this.participants = toSignal(
+      this.callingService.call()!.state.participants$,
+      // All @stream-io/video-client state Observables have an initial value, so it's safe to set the `requireSync` option: https://angular.io/guide/rxjs-interop#the-requiresync-option
+      { requireSync: true }
+    );
   }
 
   toggleMicrophone() {
