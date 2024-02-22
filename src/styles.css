@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --custom-blue: #007bff;
+  --custom-blue-hover: hsl(211, 100%, 40%);
+
+  --custom-red: hsl(0, 80%, 60%);
+  --custom-red-hover: hsl(0, 80%, 50%);
+}
+
+html {
+  background: #f1f1f1;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  width: clamp(300px, 100%, 800px);
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  height: 100%;
+}
+
+label {
+  display: block;
+  font-size: smaller;
+  color: hsl(228, 9%, 67%);
+  letter-spacing: 0.5px;
+}
+
+input {
+  width: 100%;
+  border: solid 1px transparent;
+  padding: 0;
+  font-size: x-large;
+  color: black;
+  font-weight: bold;
+  outline: transparent;
+}
+
+button {
+  font-size: larger;
+  background: var(--custom-blue);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  width: 100%;
+  border-radius: 1rem;
+  letter-spacing: 0.3px;
+  border: transparent;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: var(--custom-blue-hover);
+}

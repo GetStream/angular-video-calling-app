@@ -2,11 +2,9 @@
   <video
     #videoElement
     id="video-{{ participant.sessionId }}"
-    width="333"
-    height="250"
     [attr.sessionId]="participant.sessionId"
     autoplay
   ></video>
-  <audio #audioElement id="audio-{{ participant.sessionId }}"></audio>
   <p>{{ participant.name }}</p>
+  <audio #audioElement id="audio-{{ participant.sessionId }}"></audio>
 </div>

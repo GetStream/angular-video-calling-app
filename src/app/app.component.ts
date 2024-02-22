@@ -21,8 +21,4 @@ export class AppComponent {
   setCallId(callId: string) {
     this.callingService.setCallId(callId);
   }
-
-  leaveCall() {
-    this.callingService.setCallId(undefined);
-  }
 }

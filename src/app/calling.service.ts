@@ -13,8 +13,8 @@ export class CallingService {
   constructor() {
     const apiKey = 'mmhfdzb5evj2';
     const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiSmFjZW5fU29sbyIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvSmFjZW5fU29sbyIsImlhdCI6MTcwODUwNzg1NCwiZXhwIjoxNzA5MTEyNjU5fQ.85gEDjDTRtnmsS7iwrouu209nIv9CI1G0_bNRXs8dN4';
-    const user: User = { id: 'Jacen_Solo' };
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiQ2Fybm9yX0pheCIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvQ2Fybm9yX0pheCIsImlhdCI6MTcwODU5NjE3NSwiZXhwIjoxNzA5MjAwOTgwfQ.aaanw1N3BctIGtX8869uJXb8cnbTt8JXzZHFjEm5y8M';
+    const user: User = { id: 'Carnor_Jax' };
 
     this.client = new StreamVideoClient({ apiKey, token, user });
   }

@@ -36,4 +36,8 @@ export class CallComponent {
   trackBySessionId(_: number, participant: StreamVideoParticipant) {
     return participant.sessionId;
   }
+
+  leaveCall() {
+    this.callingService.setCallId(undefined);
+  }
 }

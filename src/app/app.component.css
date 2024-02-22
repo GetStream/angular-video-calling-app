@@ -1,44 +1,12 @@
-main {
-  background: #e1e1e1;
-}
-
-.container {
-  width: clamp(300px, 100%, 800px);
-  height: 100dvh;
+.join-section {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  font-family: sans-serif;
 }
 
-label {
-  display: block;
-  color: #888c9c;
-}
-
-input {
-  width: 300px;
-  height: 40px;
-  border-radius: 0.25rem;
-  color: #888c9c;
-  border: solid 1px #888c9c;
-  padding: 0 5px 0 10px;
-}
-
-button {
-  display: inline-block;
-  height: 40px;
-  border: transparent;
-  background: blue;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0 2rem;
-  margin: 0 1rem;
+.join-call-form {
+  padding: 1.5rem;
+  background: white;
   border-radius: 0.5rem;
-  text-transform: uppercase;
-}
-
-.leave-button {
-  margin-top: 2rem;
+  margin: 0 auto;
 }

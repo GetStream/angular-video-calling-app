@@ -1,12 +1,13 @@
-<main class="container">
-  <section *ngIf="!callingService.call()">
-    <label for="location-search">JOIN A CALL</label>
-    <input id="location-search" #callId placeholder="Enter call id" />
-    <button (click)="setCallId(callId.value)">Join</button>
+<main>
+  <section class="join-section" *ngIf="!callingService.call()">
+    <div class="join-call-form">
+      <label for="location-search">Join call</label>
+      <input id="location-search" #callId placeholder="Enter call id" />
+    </div>
+    <button (click)="setCallId(callId.value)">Join Call</button>
   </section>
   <section *ngIf="callingService.call()">
     <app-call [call]="callingService.call()!"></app-call>
-    <button class="leave-button" (click)="leaveCall()">Leave Call</button>
   </section>
 
   <router-outlet />
