@@ -1,5 +1,5 @@
 <main>
-  <section class="join-section" *ngIf="!callingService.call()">
+  <section class="join-section" *ngIf="!callingService.callId()">
     <div class="join-call-form">
       <label for="location-search">Join call</label>
       <input id="location-search" #callId placeholder="Enter call id" />
@@ -9,6 +9,5 @@
   <section *ngIf="callingService.call()">
     <app-call [call]="callingService.call()!"></app-call>
   </section>
-
   <router-outlet />
 </main>
