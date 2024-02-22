@@ -23,6 +23,6 @@ export class AppComponent {
   }
 
   leaveCall() {
-    this.callingService.call()?.leave();
+    this.callingService.setCallId(undefined);
   }
 }
