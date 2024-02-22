@@ -3,6 +3,7 @@ import { CallingService } from '../calling.service';
 import { CommonModule } from '@angular/common';
 import { Call, StreamVideoParticipant } from '@stream-io/video-client';
 import { ParticipantComponent } from '../participant/participant.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-call',
@@ -14,23 +15,10 @@ import { ParticipantComponent } from '../participant/participant.component';
 export class CallComponent {
   @Input({ required: true }) call!: Call;
 
-  participants: StreamVideoParticipant[] = [];
+  participants$: Observable<StreamVideoParticipant[]>;
 
   constructor(private callingService: CallingService) {
-    this.callingService
-      .call()
-      ?.state.participants$.subscribe((participants) => {
-        console.log('participants', participants);
-        participants.forEach((participant) => {
-          if (
-            this.participants.filter(
-              (p) => p.sessionId === participant.sessionId
-            ).length < 1
-          ) {
-            this.participants.push(participant);
-          }
-        });
-      });
+    this.participants$ = this.callingService.call()!.state.participants$;
   }
 
   toggleMicrophone() {
@@ -39,5 +27,9 @@ export class CallComponent {
 
   toggleCamera() {
     this.call.camera.toggle();
+  }
+
+  trackBySessionId(_: number, participant: StreamVideoParticipant) {
+    return participant.sessionId;
   }
 }
