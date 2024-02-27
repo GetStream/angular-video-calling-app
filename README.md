@@ -1,3 +1,5 @@
+![Blog-Using Angular Signals to build a Video Calling App-2400x1350px](https://github.com/GetStream/angular-video-calling-app/assets/12433593/3a6e9f62-525f-4871-b2c2-5458d9733218)
+
 # Building a Video Calling App using Angular Signals (+ adding RxJS interoperability)
 
 Angular Signals was introduced at Google IO 2023. It's a concept for adding reactivity to Angular applications.
