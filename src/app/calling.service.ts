@@ -25,9 +25,12 @@ export class CallingService {
   client: StreamVideoClient;
 
   constructor() {
-    const apiKey = 'mmhfdzb5evj2';
+    const apiKey = '';
     const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiQ2Fybm9yX0pheCIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvQ2Fybm9yX0pheCIsImlhdCI6MTcwODU5NjE3NSwiZXhwIjoxNzA5MjAwOTgwfQ.aaanw1N3BctIGtX8869uJXb8cnbTt8JXzZHFjEm5y8M';
+      '';
+    if (!apiKey || !token) {
+      alert('Please provide an api key and a token in CallingService')
+    }
     const user: User = { id: 'Carnor_Jax' };
 
     this.client = new StreamVideoClient({ apiKey, token, user });
